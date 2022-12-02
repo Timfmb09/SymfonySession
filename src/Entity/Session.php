@@ -180,10 +180,24 @@ class Session
         return $this;
     }
 
+    // public function getReserve(){
+        
+    //     $interval = date_diff($this->dateFin, $this->dateDebut);
+    //     return $interval ->format ("%D");
+    // }
+
+    // public function getRestante(){
+        
+    //     $interval = date_diff($this->dateFin, $this->dateDebut);
+    //     return $interval ->format ("%D");
+    // }
+
     public function __toString()
     {
-        return $this->nomSession." ".$this->nbPlace." " .$this->getFormateur()."";
+        return $this->nomSession." ".date_format($this->dateDebut, "d/m/Y")." ".date_format($this->dateFin, "d/m/Y");
 
     }
 
 }
+
+// {{dump (session)}}

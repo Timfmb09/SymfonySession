@@ -18,11 +18,7 @@ class FormateurController extends AbstractController
         //récupérer une collection de tous les formateurs de la BDD
         $formateurs = $doctrine->getRepository(Formateur::class)->findAll();
         return $this->render('formateur/index.html.twig', [
-            'formateurs' => $formateurs
-
-            
-            
-
+            'formateurs' => $formateurs                     
         ]);
     }
 }

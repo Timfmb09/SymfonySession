@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Module;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,8 +15,9 @@ class ModuleController extends AbstractController
      */
     public function index(ManagerRegistry $doctrine): Response
     {
+        $modules = $doctrine->getRepository(Module::class)->findAll();
         return $this->render('module/index.html.twig', [
-            'controller_name' => 'ModuleController',
+            'modules' => $modules
         ]);
     }
 }

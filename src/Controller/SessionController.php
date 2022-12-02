@@ -22,11 +22,11 @@ class SessionController extends AbstractController
     }
 
     /**
-     * @Route("/session"(id), name="show_session")
+     * @Route("/session/{id}", name="show_session")
      */
-    public function show(): Response
+    public function show(Session $session): Response
     { 
-        $session = "";
+        
         return $this->render('session/show.html.twig', [
             'session' => $session
         ]);

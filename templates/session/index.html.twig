@@ -14,8 +14,8 @@
     {{ session.nomSession }} ({{ session.dateDebut }} {{ session.dateFin }} {{session.nbPlace}})
     {{ session}} avec un ToString dans Entity.Session->Session.php permet de tout afficher.#}
         
-        <a href="{{ path('show_session', {'id':session.id}) }}">{{ session }}</a><br>
-    {% endfor %}
+        <a href="{{ path('show_session', {'id':session.id}) }}">{{ session }}</a><br> 
+    {% endfor %} 
 
 {% endblock %}
 
