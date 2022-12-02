@@ -1,8 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello FormateurController!{% endblock %}
+{% block title %}Hello StagiaireController!{% endblock %}
 
 {% block body %}
     <h1>Liste des stagiaires</h1>
+
+    {% for stagiaire in stagiaires %}
+        {{ stagiaire.nom ~ ' ' ~ stagiaire.prenom}} <br>
+    {% endfor %}
+
 {% endblock %}
 

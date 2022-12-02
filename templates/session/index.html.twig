@@ -3,6 +3,19 @@
 {% block title %}Hello FormateurController!{% endblock %}
 
 {% block body %}
-    <h1>Liste des sessions de formation/h1>
+    <h1>Liste des sessions de formation</h1>
+
+    {% for session in sessions %}
+        {# {{ session.nomSession ~ ' ' ~ session.dateDebut ~ ' ' ~ session.dateFin ~ ' ' ~ session.nbPlace}} <br> #}
+    
+    {# Autre façon de l'écrire : 
+    {{ session.nomSession }} <strong>commence en date du : {{ session.dateDebut }}</strong> {{ session.dateFin }} {{session.nbPlace}}
+    Si on veut des parenthèse : 
+    {{ session.nomSession }} ({{ session.dateDebut }} {{ session.dateFin }} {{session.nbPlace}})
+    {{ session}} avec un ToString dans Entity.Session->Session.php permet de tout afficher.#}
+        
+        <a href="{{ path('show_session', {'id':session.id}) }}">{{ session }}</a><br>
+    {% endfor %}
+
 {% endblock %}
 
