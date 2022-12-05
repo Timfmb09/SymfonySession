@@ -4,9 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Session;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 
 class SessionController extends AbstractController
 {
@@ -22,6 +24,18 @@ class SessionController extends AbstractController
     }
 
     /**
+     * @Route("/session/add}", name="add_session")
+     */
+    public function add(ManagerRegistry $doctrine, Session $session = null, Request $request): Response {
+        
+        $form = $this->createform(SessionType::class, $session);
+        $form->handleRequest($request);
+        
+    
+
+
+    }
+    /**
      * @Route("/session/{id}", name="show_session")
      */
     public function show(Session $session): Response
@@ -31,8 +45,5 @@ class SessionController extends AbstractController
             'session' => $session
         ]);
     }
-
-
-
 
 }
