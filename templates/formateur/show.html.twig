@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail un formateur{% endblock %}
+
+{% block body %}
+    <h1>Détail de la formateur</h1>
+    <p>    
+        Formateur : {{ formateur }} <br>
+    </p>
+
+    {% for session in formateur.sessions %}
+    <a href="{{ path('show_session', {'id':session.id}) }}">{{ session }}</a><br> 
+        
+    {% endfor %}
+  
+   
+{% endblock %}

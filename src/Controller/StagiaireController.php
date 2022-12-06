@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Stagiaire;
+use App\Form\StagiaireType;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,6 +22,34 @@ class StagiaireController extends AbstractController
             'stagiaires' => $stagiaires
         ]);
     }
+
+ /**
+     * @Route("/stagiaire/add", name="add_stagiaire")
+     */
+    public function add(ManagerRegistry $doctrine, Stagiaire $stagiaire = null, Request $request): Response {
+        
+        $form = $this->createform(StagiaireType::class, $stagiaire);
+        $form->handleRequest($request);
+        //si la données est "sanitize" on l'envoi
+        if ($form->isSubmitted() && $form->isValid()) { 
+            
+            $stagiaire = $form->getData();
+            $entityManager = $doctrine->getManager();
+            //prepare
+            $entityManager->persist($stagiaire);
+            //insert into
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_stagiaire');
+        }
+        
+        //vue pour afficher le formulaire d'ajout
+        return $this->render('stagiaire/add.html.twig', [
+            'formAddStagiaire' => $form->createView()
+        ]);
+
+    }
+
 
     /**
      * @Route("/stagiaire/{id}", name="show_stagiaire")

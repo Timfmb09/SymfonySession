@@ -3,12 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Session;
+use App\Form\SessionType;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Bridge\Doctrine\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 
 class SessionController extends AbstractController
 {
@@ -24,14 +24,29 @@ class SessionController extends AbstractController
     }
 
     /**
-     * @Route("/session/add}", name="add_session")
+     * @Route("/session/add", name="add_session")
      */
     public function add(ManagerRegistry $doctrine, Session $session = null, Request $request): Response {
         
         $form = $this->createform(SessionType::class, $session);
         $form->handleRequest($request);
+        //si la données est "sanitize" on l'envoi
+        if ($form->isSubmitted() && $form->isValid()) { 
+            
+            $session = $form->getData();
+            $entityManager = $doctrine->getManager();
+            //prepare
+            $entityManager->persist($session);
+            //insert into
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_session');
+        }
         
-    
+        //vue pour afficher le formulaire d'ajout
+        return $this->render('session/add.html.twig', [
+            'formAddSession' => $form->createView()
+        ]);
 
 
     }
