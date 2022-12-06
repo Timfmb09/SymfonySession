@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Formateur;
+use App\Form\FormateurType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,9 +26,14 @@ class FormateurController extends AbstractController
 
     /**
      * @Route("/formateur/add", name="add_formateur")
+     *  @Route("/formateur/{id}/edit", name="edit_formateur")
      */
     public function add(ManagerRegistry $doctrine, Formateur $formateur = null, Request $request): Response {
         
+        if(!$formateur){
+            $formateur = new Formateur();
+        }
+
         $form = $this->createform(FormateurType::class, $formateur);
         $form->handleRequest($request);
         //si la données est "sanitize" on l'envoi
@@ -50,6 +56,19 @@ class FormateurController extends AbstractController
 
 
     }
+
+
+     /**
+     * @Route("/formateur/{id}", name="delete_formateur")
+     */
+    public function delete(ManagerRegistry $doctrine, Formateur $formateur){
+
+        $entityManager = $doctrine->getManager();
+        $entityManager->remove($formateur);
+        $entityManager->flush();
+        return $this->redirectToRoute('app_formateur');
+    }
+
     
     /**
      * @Route("/formateur/{id}", name="show_formateur")

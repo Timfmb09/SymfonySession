@@ -39,7 +39,7 @@ class StagiaireType extends AbstractType
             ])            
             ->add('sessions', SubmitType::class, [
                 'label' => 'Confirmer',
-                'attr' => ['class' => 'form-control']
+                'attr' => ['class' => 'btn']
             ])            
         ;
     }

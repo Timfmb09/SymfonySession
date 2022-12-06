@@ -3,7 +3,13 @@
 {% block title %}Ajouter une session{% endblock %}
 
 {% block body %}
+    {% if edit %}
+    <h1>Editer une session</h1>
+    {% else %}
     <h1>Ajouter une session</h1>
+    {% endif %}
 
-    {{ form(formAddCategorie)}}
+    {{ form_start(formCategorie)}}
+    {{ form_row(formCategorie.nomCategorie)}}
+    {{ form_end(formAddCategorie)}}
 {% endblock %}

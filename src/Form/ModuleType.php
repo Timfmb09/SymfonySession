@@ -18,7 +18,8 @@ class ModuleType extends AbstractType
     {
         $builder
             ->add('nomModule', TextType::class, [
-                'attr' => ['class'=> 'form-control', 'placeholder'=> 'Nom du module']
+                'attr' => ['class'=> 'form-control',
+                'placeholder'=> 'Nom du module']
             ])
             ->add('categorie', EntityType::class, [
                 'class'=> Categorie::class,
