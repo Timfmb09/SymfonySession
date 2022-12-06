@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Categorie;
+use App\Form\CategorieType;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,8 +17,47 @@ class CategorieController extends AbstractController
      */
     public function index(ManagerRegistry $doctrine): Response
     {
+        $categories = $doctrine->getRepository(Categorie::class)->findBy([], ["nomCategorie"=> "ASC"]);
         return $this->render('categorie/index.html.twig', [
             'controller_name' => 'CategorieController',
         ]);
     }
+     /**
+     * @Route("/categorie/add", name="add_categorie")
+     */
+    public function add(ManagerRegistry $doctrine, Categorie $categorie = null, Request $request): Response {
+        
+        $form = $this->createform(CategorieType::class, $categorie);
+        $form->handleRequest($request);
+        //si la données est "sanitize" on l'envoi
+        if ($form->isSubmitted() && $form->isValid()) { 
+            
+            $categorie = $form->getData();
+            $entityManager = $doctrine->getManager();
+            //prepare
+            $entityManager->persist($categorie);
+            //insert into
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_categorie');
+        }
+        
+        //vue pour afficher le formulaire d'ajout
+        return $this->render('categorie/add.html.twig', [
+            'formAddCategorie' => $form->createView()
+        ]);
+
+
+    }
+    /**
+     * @Route("/categorie/{id}", name="show_categorie")
+     */
+    public function show(Categorie $categorie): Response
+    { 
+        
+        return $this->render('categorie/show.html.twig', [
+            'categorie' => $categorie
+        ]);
+    }
+
 }

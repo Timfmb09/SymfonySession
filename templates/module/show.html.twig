@@ -1,0 +1,24 @@
+{# {% extends 'base.html.twig' %}
+
+{% block title %}Détail du module{% endblock %}
+
+{% block body %}
+    <h1>Détail du module</h1>
+    <p>    
+        Module : {{ module }} <br>
+    </p>
+
+    Référent du module : {% for module in session.module %}
+    <a href="{{ path('show_module', {'id':module.id}) }}">{{ module }}</a><br> 
+        
+    {% endfor %}
+
+    {# {% for programme in module.programmes %}
+    <a href="{{ path('show_session', {'id':programme.session.id}) }}">{{ programme.session }}</a><br> 
+    {% endfor %}
+  
+  <p>
+    <a href="{{ path('add_session') }}">Ajouter une session</a>
+  </p> #}
+   
+{# {% endblock %}  #}

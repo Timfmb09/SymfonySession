@@ -8,9 +8,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class SessionType extends AbstractType
 {
@@ -20,11 +20,11 @@ class SessionType extends AbstractType
             ->add('nomSession', TextType::class, [
                 'attr' => ['class' => 'form-control']
             ])            
-            ->add('dateDebut', DateType::class, [
+            ->add('dateDebut', DateTimeType::class, [
                 'widget' => 'single_text',
                 'attr' => ['class' => 'form-control']
             ])
-            ->add('dateFin', DateType::class, [
+            ->add('dateFin', DateTimeType::class, [
                 'widget' => 'single_text'
             ])
             ->add('nbPlace', TextType::class, [
