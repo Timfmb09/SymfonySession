@@ -5,14 +5,14 @@
 {% block body %}
     <h1>Liste des formateurs</h1>
 
+    {% for formateur in formateurs %}
+    <a href="{{ path('show_formateur', {'id':formateur.id}) }}">{{ formateur }}</a>
+    <a href="{{ path('edit_formateur', {'id':formateur.id}) }}">Editer</a>
+    <a href="{{ path('delete_formateur', {'id':formateur.id}) }}">Supprimer</a><br> 
+    {% endfor %}
+
     <p>
     <a class="btn" href="{{ path('add_formateur') }}">Ajouter un formateur</a><br>
     </p>
-
-    {% for formateur in formateurs %}
-    <a href="{{ path('show_formateur', {'id':formateur.id}) }}">{{ formateur }}</a><br> 
-    <a href="{{ path('edit_formateur', {'id':formateur.id}) }}">Editer</a><br> 
-    <a href="{{ path('delete_formateur', {'id':formateur.id}) }}">Supprimer</a><br> 
-    {% endfor %}
 
 {% endblock %}

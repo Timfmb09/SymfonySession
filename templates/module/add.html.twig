@@ -3,7 +3,13 @@
 {% block title %}Ajouter un module{% endblock %}
 
 {% block body %}
-    <h1>Ajouter un module</h1>
 
+{% if edit %}
+    <h1>Editer un module</h1>
+    {% else %}
+    <h1>Ajouter un module</h1>
+    {% endif %}
+   
     {{ form(formAddModule)}}
+    
 {% endblock %}
