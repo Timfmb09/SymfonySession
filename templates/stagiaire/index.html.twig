@@ -8,8 +8,14 @@
     <a class="btn" href="{{ path('add_stagiaire') }}">Ajouter un stagiaire</a><br>
     </p>
     {% for stagiaire in stagiaires %}
-        <a href="{{ path('show_stagiaire', {'id': stagiaire.id}) }}"> {{ stagiaire }}</a> <br>
-
+       <tr>
+            <td><a href="{{ path('show_stagiaire', {'id': stagiaire.id}) }}"> {{ stagiaire }}</a></td>
+            {% for session in stagiaire.sessions %}
+                {{session}}<br>
+            {% endfor %}
+            
+            {# <td><a href="{{ path('add_stagiaire_session', {'idSt': stagiaire.id, 'idSe': session.id}) }}"></a></td>  #}
+       </tr>
     {% endfor %}
 
 {% endblock %}

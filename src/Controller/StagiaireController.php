@@ -57,7 +57,8 @@ class StagiaireController extends AbstractController
     public function show(Stagiaire $stagiaire): Response
     { 
         return $this->render('stagiaire/show.html.twig', [
-            'stagiaire' => $stagiaire
+            'stagiaire' => $stagiaire,
+    
         ]);
     }
 
