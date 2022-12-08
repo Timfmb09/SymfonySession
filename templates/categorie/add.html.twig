@@ -9,8 +9,9 @@
     {% else %}
     <h1>Ajouter une catégorie</h1>
     {% endif %}
-
+<div class="add">
     {{ form_start(formAddCategorie)}}
     {{ form_row(formAddCategorie.nomCategorie)}}
     {{ form_end(formAddCategorie)}}
+</div>
 {% endblock %}

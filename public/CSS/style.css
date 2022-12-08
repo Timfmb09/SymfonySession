@@ -30,3 +30,11 @@ h1{
 h2{
     color:rgb(54, 104, 164)
 }
+
+.add{
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    background: rgb(99, 138, 197);    
+}
