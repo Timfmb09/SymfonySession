@@ -20,12 +20,22 @@
                  <li><a href="{{path('app_categorie') }}">Liste des categories</a></li>  
             </ul>
         </nav>
-
+            {% if app.user %}
+                <a href="{{path('app_logout')}}">Se déconnecter</a>
+                <a href="">Mon profil</a>
+                {% else %}
+                <a href="{{path('app_login')}}">Se connecter</a>
+                <a href="{{path('app_register')}}">S'enregistrer</a>
+            {% endif %}
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="">Panneau d'administration</a>
+            {% endif %}
         {% block body %}{% endblock %}
 
 
         {% block javascripts %}
             
         {% endblock %}
-    </body>
+    </body>      
+
 </html>
