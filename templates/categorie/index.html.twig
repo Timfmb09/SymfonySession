@@ -7,8 +7,8 @@
 
     {% for categorie in categories %}
         <a href="{{ path('show_categorie', {'id': categorie.id}) }}"> {{ categorie }}</a>  
-        <a href="{{ path('edit_categorie', {'id':categorie.id}) }}">Editer</a>
-        <a href="{{ path('delete_categorie', {'id':categorie.id}) }}">Supprimer</a><br> 
+        <a class = "btn1" href="{{ path('edit_categorie', {'id':categorie.id}) }}">Editer</a>
+        <a class = "btn1" href="{{ path('delete_categorie', {'id':categorie.id}) }}">Supprimer</a><br> 
     {% endfor %} 
     <p>
         <a class="btn" href="{{ path('add_categorie') }}">Ajouter une categorie</a><br> 

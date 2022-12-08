@@ -37,7 +37,7 @@ class StagiaireType extends AbstractType
             ->add('telephone', TextType::class, [
                 'attr' => ['class' => 'form-control']
             ])            
-            ->add('sessions', SubmitType::class, [
+            ->add('submit', SubmitType::class, [
                 'label' => 'Confirmer',
                 'attr' => ['class' => 'btn']
             ])            

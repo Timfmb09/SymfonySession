@@ -9,7 +9,7 @@
     </p>
     {% for stagiaire in stagiaires %}
        <tr>
-            <td><a href="{{ path('show_stagiaire', {'id': stagiaire.id}) }}"> {{ stagiaire }}</a></td>
+            <td><a href="{{ path('show_stagiaire', {'id': stagiaire.id}) }}"> {{ stagiaire }}</a></td><br>
             {% for session in stagiaire.sessions %}
                 {{session}}<br>
             {% endfor %}

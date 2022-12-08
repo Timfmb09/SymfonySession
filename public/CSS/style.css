@@ -2,14 +2,26 @@
     background-color: #43339c; 
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 8px 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 15px;
     border-radius: 8px;
 }
 
+.btn1{
+    background-color: #33849c; 
+    border: none;
+    color: white;
+    padding: 8px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    border-radius: 8px;
+
+}
 h1{
     color: rgb(28, 114, 220)
 

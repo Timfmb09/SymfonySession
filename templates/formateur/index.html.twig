@@ -7,8 +7,8 @@
 
     {% for formateur in formateurs %}
     <a href="{{ path('show_formateur', {'id':formateur.id}) }}">{{ formateur }}</a>
-    <a href="{{ path('edit_formateur', {'id':formateur.id}) }}">Editer</a>
-    <a href="{{ path('delete_formateur', {'id':formateur.id}) }}">Supprimer</a><br> 
+    <a class="btn1" href="{{ path('edit_formateur', {'id':formateur.id}) }}">Editer</a>
+    <a class="btn1" href="{{ path('delete_formateur', {'id':formateur.id}) }}">Supprimer</a><br> 
     {% endfor %}
 
     <p>
