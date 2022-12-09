@@ -19,11 +19,6 @@
     <p>
     <a class="btn" href="{{ path('add_formateur') }}">Ajouter un formateur</a>
     </p>
-
-    {% for formateur in formateurs %}
-    <a href="{{ path('show_formateur', {'id':formateur.id}) }}">{{ formateur }}</a><br> 
-    <a href="{{ path('edit_formateur', {'id':formateur.id}) }}">Editer</a><br> 
-    <a href="{{ path('delete_formateur', {'id':formateur.id}) }}">Supprimer</a><br> 
-    {% endfor %}
+   
 
 {% endblock %}
