@@ -3,6 +3,7 @@
 {% block title %}Categorie{% endblock %}
 
 {% block body %}
+<<<<<<< HEAD
     <table>
         <caption><h1>Liste des categories</h1></caption>
     <tbody>
@@ -19,5 +20,14 @@
         <a class="btn" href="{{ path('add_categorie') }}">Ajouter une categorie</a>
     </p>
         
+=======
+    <h1>Liste des categories</h1>
+   
+    {% for categorie in categories%}
+        <a href="{{ path('edit_categorie', {'id':categorie.id}) }}">Editer</a><br> 
+        <a href="{{ path('delete_categorie', {'id':categorie.id}) }}">Supprimer</a><br> 
+    {% endfor %} 
+         <a class="btn" href="{{ path('add_categorie') }}">Ajouter une categorie</a><br> 
+>>>>>>> parent of fb1cde4... Add&Edit&Delete Done
 {% endblock %}
 

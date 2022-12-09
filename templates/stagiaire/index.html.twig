@@ -3,9 +3,14 @@
 {% block title %}Hello StagiaireController!{% endblock %}
 
 {% block body %}
+<<<<<<< HEAD
     <table>
         <caption><h1>Liste des stagiaires</h1></caption>
     <tbody>
+=======
+    <h1>Liste des stagiaires</h1>
+    <a class="btn" href="{{ path('add_stagiaire') }}">Ajouter un stagiaire</a><br>
+>>>>>>> parent of fb1cde4... Add&Edit&Delete Done
     {% for stagiaire in stagiaires %}
         <tr>
             <th scope="col">Stagiaire</th>

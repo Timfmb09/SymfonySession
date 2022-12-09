@@ -8,9 +8,9 @@
         Formateur : {{ formateur }} <br>
     </p>
 
-    Référent des sessions suivantes :<br> 
-    {% for session in formateur.sessions %}
+    Référent de la session : {% for session in formateur.sessions %}
     <a href="{{ path('show_session', {'id':session.id}) }}">{{ session }}</a><br> 
+        
     {% endfor %}
   
    

@@ -26,7 +26,7 @@ class FormateurController extends AbstractController
 
     /**
      * @Route("/formateur/add", name="add_formateur")
-     * @Route("/formateur/{id}/edit", name="edit_formateur")
+     *  @Route("/formateur/{id}/edit", name="edit_formateur")
      */
     public function add(ManagerRegistry $doctrine, Formateur $formateur = null, Request $request): Response {
         
@@ -34,7 +34,7 @@ class FormateurController extends AbstractController
             $formateur = new Formateur();
         }
 
-        $form = $this->createForm(FormateurType::class, $formateur);
+        $form = $this->createform(FormateurType::class, $formateur);
         $form->handleRequest($request);
         //si la données est "sanitize" on l'envoi
         if ($form->isSubmitted() && $form->isValid()) { 
@@ -49,10 +49,9 @@ class FormateurController extends AbstractController
             return $this->redirectToRoute('app_formateur');
         }
         
-        //vue pour afficher le formulaire d'ajout ou d'edition
+        //vue pour afficher le formulaire d'ajout
         return $this->render('formateur/add.html.twig', [
-            'formAddFormateur' => $form->createView(),
-            'edit' =>$formateur->getId()
+            'formAddFormateur' => $form->createView()
         ]);
 
 
@@ -60,7 +59,7 @@ class FormateurController extends AbstractController
 
 
      /**
-     * @Route("/formateur/{id}/delete", name="delete_formateur")
+     * @Route("/formateur/{id}", name="delete_formateur")
      */
     public function delete(ManagerRegistry $doctrine, Formateur $formateur){
 

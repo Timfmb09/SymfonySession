@@ -3,6 +3,7 @@
 {% block title %}Hello ModuleController!{% endblock %}
 
 {% block body %}
+<<<<<<< HEAD
     <table>
         <caption><h1>Liste des modules</h1></caption>
     <tbody>
@@ -20,6 +21,14 @@
     <p>
     <a class="btn" href="{{ path('add_module') }}">Ajouter un module</a>
     </p>
+=======
+    <h1>Liste des modules</h1>
+    <a class="btn" href="{{ path('add_module') }}">Ajouter un module</a><br> 
+    {% for module in modules %}
+        <a href="{{ path('show_module', {'id':module.id}) }}">{{ module }}</a><br> 
+      
+    {% endfor %}
+>>>>>>> parent of fb1cde4... Add&Edit&Delete Done
     
 {% endblock %}
 

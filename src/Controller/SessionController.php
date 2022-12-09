@@ -32,7 +32,7 @@ class SessionController extends AbstractController
      */
     public function add(ManagerRegistry $doctrine, Session $session = null, Request $request): Response {
         
-        $form = $this->createForm(SessionType::class, $session);
+        $form = $this->createform(SessionType::class, $session);
         $form->handleRequest($request);
         //si la données est "sanitize" on l'envoi
         if ($form->isSubmitted() && $form->isValid()) { 
