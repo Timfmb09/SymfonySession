@@ -3,12 +3,26 @@
 {% block title %}Session{% endblock %}
 
 {% block body %}
-    <h1>Liste des sessions</h1>
-  
+    <table>
+        <caption><h1>Liste des sessions</h1></caption>
+    </tbody>    
     {% for session in sessions %}
-        <a href="{{ path('show_session', {'id':session.id}) }}">{{ session }}</a><br> 
-    {% endfor %} 
-
+        <th scope="col">Nom de la session</th>
+        <th scope="col">Date de début</th>
+        <th scope="col">Date de fin</th>         
+    </tr>
+    <tr>
+        <td><a href="{{ path('show_session', {'id':session.id}) }}">{{ session.nomSession }}</a></td><br> 
+        <td>       
+            {{ session.dateDebut|date("d/m/Y") }}<br>
+        </td>
+        <td>      
+            {{ session.dateFin|date("d/m/Y") }}<br>
+         </td>
+    </tr>
+    {% endfor %}
+    </tbody>   
+    </table>
     <p>
     <a class="btn" href="{{ path('add_session') }}">Ajouter une session</a><br> 
     </p>

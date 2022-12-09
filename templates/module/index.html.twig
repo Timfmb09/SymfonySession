@@ -3,17 +3,22 @@
 {% block title %}Hello ModuleController!{% endblock %}
 
 {% block body %}
-    <h1>Liste des modules</h1>
-  
-
+    <table>
+        <caption><h1>Liste des modules</h1></caption>
+    <tbody>
     {% for module in modules %}
-        <a href="{{ path('show_module', {'id':module.id}) }}">{{ module }}</a>
-        <a class="btn1" href="{{ path('edit_module', {'id':module.id}) }}">Editer</a>
-        <a class="btn1" href="{{ path('delete_module', {'id':module.id}) }}">Supprimer</a><br> 
+    <tr>
+        <td><a href="{{ path('show_module', {'id':module.id}) }}">{{ module }}</a></td>
+        <td><a class="btn1" href="{{ path('edit_module', {'id':module.id}) }}">Editer</a></td>
+        <td><a class="btn1" href="{{ path('delete_module', {'id':module.id}) }}">Supprimer</a></td>
+        
+    </tr>
     {% endfor %}
+    </tbody>
+    </table>
 
     <p>
-    <a class="btn" href="{{ path('add_module') }}">Ajouter un module</a><br> 
+    <a class="btn" href="{{ path('add_module') }}">Ajouter un module</a>
     </p>
     
 {% endblock %}

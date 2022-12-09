@@ -3,15 +3,20 @@
 {% block title %}Categorie{% endblock %}
 
 {% block body %}
-    <h1>Liste des categories</h1>
-
+    <table>
+        <caption><h1>Liste des categories</h1></caption>
+    <tbody>
     {% for categorie in categories %}
-        <a href="{{ path('show_categorie', {'id': categorie.id}) }}"> {{ categorie }}</a>  
-        <a class = "btn1" href="{{ path('edit_categorie', {'id':categorie.id}) }}">Editer</a>
-        <a class = "btn1" href="{{ path('delete_categorie', {'id':categorie.id}) }}">Supprimer</a><br> 
+    <tr>
+        <td><a href="{{ path('show_categorie', {'id': categorie.id}) }}"> {{ categorie }}</a></td>  
+        <td><a class = "btn1" href="{{ path('edit_categorie', {'id':categorie.id}) }}">Editer</a></td>
+        <td><a class = "btn1" href="{{ path('delete_categorie', {'id':categorie.id}) }}">Supprimer</a></td>
+    </tr>
     {% endfor %} 
+    </tbody>
+    </table>
     <p>
-        <a class="btn" href="{{ path('add_categorie') }}">Ajouter une categorie</a><br> 
+        <a class="btn" href="{{ path('add_categorie') }}">Ajouter une categorie</a>
     </p>
         
 {% endblock %}

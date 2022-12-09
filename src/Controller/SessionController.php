@@ -60,10 +60,10 @@ class SessionController extends AbstractController
      */
     public function addStagiaire(ManagerRegistry $doctrine, Session $session, Stagiaire $stagiaire) {
 
-    $em = $doctrine->getManager(); 
-    $session->addStagiaire($stagiaire);
-    $em->persist($session);
-    $em->flush();
+        $em = $doctrine->getManager(); 
+        $session->addStagiaire($stagiaire);
+        $em->persist($session);
+        $em->flush();
 
     return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
 

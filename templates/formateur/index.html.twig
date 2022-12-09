@@ -3,16 +3,21 @@
 {% block title %}Hello FormateurController!{% endblock %}
 
 {% block body %}
-    <h1>Liste des formateurs</h1>
-
+    <table>
+        <caption><h1>Liste des formateurs</h1></caption>
+    <tbody>
     {% for formateur in formateurs %}
-    <a href="{{ path('show_formateur', {'id':formateur.id}) }}">{{ formateur }}</a>
-    <a class="btn1" href="{{ path('edit_formateur', {'id':formateur.id}) }}">Editer</a>
-    <a class="btn1" href="{{ path('delete_formateur', {'id':formateur.id}) }}">Supprimer</a><br> 
+    <tr>
+        <td><a href="{{ path('show_formateur', {'id':formateur.id}) }}">{{ formateur }}</a></td>
+        <td><a class="btn1" href="{{ path('edit_formateur', {'id':formateur.id}) }}">Editer</a></td>
+        <td><a class="btn1" href="{{ path('delete_formateur', {'id':formateur.id}) }}">Supprimer</a></td>
+    </tr>
     {% endfor %}
+    </tbody>    
+    </table>
 
     <p>
-    <a class="btn" href="{{ path('add_formateur') }}">Ajouter un formateur</a><br>
+    <a class="btn" href="{{ path('add_formateur') }}">Ajouter un formateur</a>
     </p>
 
 {% endblock %}

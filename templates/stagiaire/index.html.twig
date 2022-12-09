@@ -3,21 +3,45 @@
 {% block title %}Hello StagiaireController!{% endblock %}
 
 {% block body %}
-    <h1>Liste des stagiaires</h1>
-    
+    <table>
+        <caption><h1>Liste des stagiaires</h1></caption>
+    <tbody>
     {% for stagiaire in stagiaires %}
-       <tr>
+        <tr>
+            <th scope="col">Stagiaire</th>
+            <th scope="col">Nom de la session</th>
+            <th scope="col">Date de début</th>
+            <th scope="col">Date de fin</th>
+        </tr>
+        <tr>
             <td><a href="{{ path('show_stagiaire', {'id': stagiaire.id}) }}"> {{ stagiaire }}</a></td><br>
+            <td>        
             {% for session in stagiaire.sessions %}
-                {{session}}<br>
+                {{ session.nomSession }}<br>
             {% endfor %}
-            
+            </td>
+
+            <td>       
+            {% for session in stagiaire.sessions %}
+                {{ session.dateDebut|date("d/m/Y") }}<br>
+            {% endfor %}
+            </td>
+
+            <td>      
+            {% for session in stagiaire.sessions %}
+                {{ session.dateFin|date("d/m/Y") }}<br>
+            {% endfor %}
+            </td>
+         
             {# <td><a href="{{ path('add_stagiaire_session', {'idSt': stagiaire.id, 'idSe': session.id}) }}"></a></td>  #}
-       </tr>
+        </tr>
     {% endfor %}
+    </tbody>    
+    </table>
+  
 
     <p>
-    <a class="btn" href="{{ path('add_stagiaire') }}">Ajouter un stagiaire</a><br>
+    <a class="btn" href="{{ path('add_stagiaire') }}">Ajouter un stagiaire</a>
     </p>
 
 {% endblock %}
