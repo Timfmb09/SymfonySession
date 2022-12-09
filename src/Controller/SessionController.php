@@ -77,7 +77,6 @@ class SessionController extends AbstractController
     public function show(Session $session, SessionRepository $sr): Response { 
         
         $nonInscrits = $sr->findNonInscrits($session->getId());
-
         return $this->render('session/show.html.twig', [
             'session' => $session,
             'nonInscrits' => $nonInscrits

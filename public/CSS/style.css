@@ -74,10 +74,11 @@ h2{
 .add{
     width: 100%;
     display: flex;
-    gap: 20px;
-    padding: 20px;
+    /* gap: 20px; */
+    /* padding: 20px; */
     background: rgb(112, 166, 241); 
     justify-content: center;
+    
 }
 
 td{
