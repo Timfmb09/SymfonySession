@@ -194,7 +194,8 @@ class Session
 
     public function __toString()
     {
-        return $this->nomSession." ".date_format($this->dateDebut, "d/m/Y")." ".date_format($this->dateFin, "d/m/Y");
+        return $this->nomSession." ".$this->nbPlace." " .$this->getFormateur()."";
+        // return $this->nomSession." ".date_format($this->dateDebut, "d/m/Y")." ".date_format($this->dateFin, "d/m/Y");
 
     }
 

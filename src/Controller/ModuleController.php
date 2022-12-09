@@ -24,10 +24,14 @@ class ModuleController extends AbstractController
     }
      /**
      * @Route("/module/add", name="add_module")
+     * @Route("/module/{id}edit", name="edit_module")
      */
     public function add(ManagerRegistry $doctrine, Module $module = null, Request $request): Response {
-        
-        $form = $this->createform(ModuleType::class, $module);
+       
+        if(!$module) {
+            $module = new Module();
+        }
+        $form = $this->createForm(ModuleType::class, $module);
         $form->handleRequest($request);
         //si la données est "sanitize" on l'envoi
         if ($form->isSubmitted() && $form->isValid()) { 
@@ -44,11 +48,24 @@ class ModuleController extends AbstractController
         
         //vue pour afficher le formulaire d'ajout
         return $this->render('module/add.html.twig', [
+            'formAddModule' => $form->createView(),            
+            'edit' =>$module->getId(),
             'formAddModule' => $form->createView()
         ]);
 
-
     }
+
+    /**
+     * @Route("/module/{id}/delete", name="delete_module")
+     */
+    public function delete(ManagerRegistry $doctrine, Module $module){
+
+        $entityManager = $doctrine->getManager();
+        $entityManager->remove($module);
+        $entityManager->flush();
+        return $this->redirectToRoute('app_module');
+    }
+    
     /**
      * @Route("/module/{id}", name="show_module")
      */

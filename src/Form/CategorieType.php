@@ -18,7 +18,7 @@ class CategorieType extends AbstractType
                 'attr' => ['class'=> 'form-control', 'placeholder'=> 'Intitulé de la catégorie']
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Valider',
+                'label' => 'Confirmer',
                 'attr' => ['class' => 'btn']
             ])
         ;

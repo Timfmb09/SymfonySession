@@ -21,7 +21,7 @@ class ModuleType extends AbstractType
                 'attr' => ['class'=> 'form-control',
                 'placeholder'=> 'Nom du module']
             ])
-            ->add('categorie', EntityType::class, [
+            ->add('categories', EntityType::class, [
                 'class'=> Categorie::class,
                 'choice_label'=> 'nomCategorie', 
                 'placeholder' => 'Selection de la catégorie',

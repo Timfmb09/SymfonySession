@@ -19,15 +19,21 @@ class CategorieController extends AbstractController
     {
         $categories = $doctrine->getRepository(Categorie::class)->findBy([], ["nomCategorie"=> "ASC"]);
         return $this->render('categorie/index.html.twig', [
+            'categories' => $categories,
             'controller_name' => 'CategorieController',
         ]);
     }
      /**
      * @Route("/categorie/add", name="add_categorie")
+     * @Route("/categorie/{id}/edit", name="edit_categorie")
+
      */
     public function add(ManagerRegistry $doctrine, Categorie $categorie = null, Request $request): Response {
-        
-        $form = $this->createform(CategorieType::class, $categorie);
+       
+        if(!$categorie) {
+            $categorie = new Categorie();
+        }
+        $form = $this->createForm(CategorieType::class, $categorie);      
         $form->handleRequest($request);
         //si la données est "sanitize" on l'envoi
         if ($form->isSubmitted() && $form->isValid()) { 
@@ -42,13 +48,26 @@ class CategorieController extends AbstractController
             return $this->redirectToRoute('app_categorie');
         }
         
+        //vue pour afficher le formulaire d'ajout ou d'edition
         //vue pour afficher le formulaire d'ajout
         return $this->render('categorie/add.html.twig', [
+            'formAddCategorie' => $form->createView(),
+            'edit' =>$categorie->getId(),
             'formAddCategorie' => $form->createView()
         ]);
 
-
     }
+
+    /**
+     * @Route("/categorie/{id}/delete", name="delete_categorie")
+     */
+    public function delete(ManagerRegistry $doctrine, Categorie $categorie){
+
+        $entityManager = $doctrine->getManager();
+        $entityManager->remove($categorie);
+        $entityManager->flush();
+        return $this->redirectToRoute('app_categorie');
+        }
     /**
      * @Route("/categorie/{id}", name="show_categorie")
      */
@@ -56,7 +75,7 @@ class CategorieController extends AbstractController
     { 
         
         return $this->render('categorie/show.html.twig', [
-            'categorie' => $categorie
+            'categorie'=> $categorie          
         ]);
     }
 

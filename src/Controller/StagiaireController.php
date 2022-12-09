@@ -28,7 +28,7 @@ class StagiaireController extends AbstractController
      */
     public function add(ManagerRegistry $doctrine, Stagiaire $stagiaire = null, Request $request): Response {
         
-        $form = $this->createform(StagiaireType::class, $stagiaire);
+        $form = $this->createForm(StagiaireType::class, $stagiaire);
         $form->handleRequest($request);
         //si la données est "sanitize" on l'envoi
         if ($form->isSubmitted() && $form->isValid()) { 

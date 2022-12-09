@@ -3,7 +3,6 @@
 {% block title %}Session{% endblock %}
 
 {% block body %}
-<<<<<<< HEAD
     <table>
         <caption><h1>Liste des sessions</h1></caption>
     </tbody>    
@@ -27,14 +26,6 @@
     <p>
     <a class="btn" href="{{ path('add_session') }}">Ajouter une session</a><br> 
     </p>
-=======
-    <h1>Liste des sessions</h1>
-    <a class="btn" href="{{ path('add_session') }}">Ajouter une session</a><br> 
-
-    {% for session in sessions %}
-        <a href="{{ path('show_session', {'id':session.id}) }}">{{ session }}</a><br> 
-    {% endfor %} 
->>>>>>> parent of fb1cde4... Add&Edit&Delete Done
 
 {% endblock %}
 
