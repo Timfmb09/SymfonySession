@@ -28,7 +28,8 @@ class HomeController extends AbstractController
     /**
      * @Route("/session/{id}", name="show_session")
      */
-    public function show(Session $session): Response { 
+    public function show(Session $session): Response
+    { 
         
         return $this->render('session/show.html.twig', [
             
