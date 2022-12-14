@@ -21,10 +21,25 @@ ul, li, a{
     list-style: none
 }
 
-td, tr{
+td{
     font-family: Verdana,sans-serif;
     font-size: 100%;
-    color:rgb(18, 20, 32)
+    color:rgb(18, 20, 32);
+    border: 2px solid black;
+}
+
+tr{
+    font-family: Verdana,sans-serif;
+    font-size: 100%;
+    color:rgb(18, 20, 32);
+    border: 2px solid black;
+}
+
+th{
+    font-family: Verdana,sans-serif;
+    font-size: 100%;
+    color:rgb(18, 20, 32);
+    
 }
 
 
